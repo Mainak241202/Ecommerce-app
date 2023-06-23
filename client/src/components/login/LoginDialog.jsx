@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Dialog,
   Box,
@@ -8,6 +8,7 @@ import {
   styled,
 } from "@mui/material";
 import { authenticateSignup } from "./../../service/api";
+import { DataContext } from "./../../context/DataProvider";
 
 const Component = styled(Box)({
   height: "100vh",
@@ -90,6 +91,7 @@ const signupInitialValues = {
 const LoginDialog = ({ open, setopen }) => {
   const [account, toggleAccount] = useState(accountInitialValues.login);
   const [signup, setSignup] = useState(signupInitialValues);
+  const { setAccount } = useContext(DataContext);
 
   const handleClose = () => {
     setopen(false);
@@ -102,6 +104,9 @@ const LoginDialog = ({ open, setopen }) => {
 
   const signupUser = async () => {
     let response = await authenticateSignup(signup);
+    if (!response) return;
+    handleClose();
+    setAccount(signup.firstname);
   };
 
   const onInputChange = (e) => {
