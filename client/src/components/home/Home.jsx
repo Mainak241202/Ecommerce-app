@@ -5,6 +5,8 @@ import { Box, styled } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/actions/productActions";
 import Slide from "./Slide";
+import Midslide from "./Midslide";
+import Midsection from "./Midsection";
 
 const Component = styled(Box)({
   padding: "10px",
@@ -24,7 +26,8 @@ const Home = () => {
       <Navbar />
       <Component>
         <Banner />
-        <Slide products={products} title="Deals of the day" timer={true} />
+        <Midslide products={products} title="Deals of the day" timer={true} />
+        <Midsection />
         <Slide products={products} title="Discounts for you" timer={false} />
         <Slide products={products} title="Suggesting Items" timer={false} />
         <Slide products={products} title="Top Selection" timer={false} />
