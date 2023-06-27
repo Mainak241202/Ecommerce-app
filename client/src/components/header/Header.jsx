@@ -2,15 +2,18 @@ import React from "react";
 import { AppBar, Box, Toolbar, Typography, styled } from "@mui/material";
 import Search from "./Search";
 import CustomButton from "./CustomButton";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled(AppBar)({
   background: "#2874f0",
   height: "55px",
 });
 
-const Component = styled(Box)({
+const Component = styled(Link)({
   marginLeft: "12%",
   lineHeight: 0,
+  textDecoration: "none",
+  color: "inherit",
 });
 
 const Subheading = styled(Typography)({
@@ -37,7 +40,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: "55px" }}>
-        <Component>
+        <Component to="/">
           <img src={logoURL} alt="logo" style={{ width: "75px" }} />
           <Box style={{ display: "flex" }}>
             <Subheading>
