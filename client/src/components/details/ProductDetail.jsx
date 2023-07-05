@@ -1,5 +1,13 @@
 import React from "react";
-import { Typography, Box, styled } from "@mui/material";
+import {
+  Typography,
+  Box,
+  styled,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+} from "@mui/material";
 import { LocalOffer as Badge } from "@mui/icons-material/";
 
 const SmallText = styled(Box)({
@@ -21,6 +29,9 @@ const StyledBadge = styled(Badge)({
 const ProductDetail = ({ product }) => {
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
+  const date = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000);
+  const adURL =
+    "https://rukminim1.flixcart.com/lockin/774/185/images/CCO__PP_2019-07-14.png?q=50";
 
   return (
     <>
@@ -65,6 +76,37 @@ const ProductDetail = ({ product }) => {
           Partner OfferExtra 10% off upto ₹500 on next furniture purchase
         </Typography>
       </SmallText>
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell style={{ color: "#878787" }}>Delivery</TableCell>
+            <TableCell style={{ fontWeight: 600 }}>
+              Delivery by {date.toDateString()} | ₹40
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell style={{ color: "#878787" }}>Warranty</TableCell>
+            <TableCell>No Warranty</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell style={{ color: "#878787" }}>Seller</TableCell>
+            <TableCell>
+              <span style={{ color: "#2874f0" }}>SuperComNet</span>
+              <Typography>GST invoice available</Typography>
+              <Typography>View more sellers starting from ₹329</Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2}>
+              <img src={adURL} style={{ width: 390 }} alt="img" />
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell style={{ color: "#878787" }}>Description</TableCell>
+            <TableCell>{product.description}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </>
   );
 };
