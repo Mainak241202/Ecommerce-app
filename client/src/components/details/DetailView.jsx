@@ -2,7 +2,7 @@ import { useEffect, React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../redux/actions/productActions";
-import { Box, Typography, styled, Grid } from "@mui/material";
+import { Box, styled, Grid } from "@mui/material";
 import ActionItem from "./ActionItem";
 import ProductDetail from "./ProductDetail";
 
@@ -11,10 +11,13 @@ const Component = styled(Box)({
   marginTop: "55px",
 });
 
-const Container = styled(Grid)({
+const Container = styled(Grid)(({ theme }) => ({
   display: "flex",
   background: "#ffffff",
-});
+  [theme.breakpoints.down("md")]: {
+    margin: 0,
+  },
+}));
 
 const RightContainer = styled(Grid)({
   marginTop: "50px",
@@ -25,8 +28,6 @@ const RightContainer = styled(Grid)({
 });
 
 const DetailView = () => {
-  const fassured =
-    "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
   const dispatch = useDispatch();
   const { id } = useParams();
   const { loading, product } = useSelector((state) => state.getProductDetails);

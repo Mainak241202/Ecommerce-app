@@ -26,6 +26,16 @@ const StyledBadge = styled(Badge)({
   color: "#00cc00",
 });
 
+const ColumnText = styled(TableRow)({
+  fontSize: "14px",
+  verticalAlign: "baseline",
+  "& > td": {
+    fontSize: "14px",
+    marginTop: "10px",
+    border: "none",
+  },
+});
+
 const ProductDetail = ({ product }) => {
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
@@ -78,33 +88,33 @@ const ProductDetail = ({ product }) => {
       </SmallText>
       <Table>
         <TableBody>
-          <TableRow>
+          <ColumnText>
             <TableCell style={{ color: "#878787" }}>Delivery</TableCell>
             <TableCell style={{ fontWeight: 600 }}>
               Delivery by {date.toDateString()} | ₹40
             </TableCell>
-          </TableRow>
-          <TableRow>
+          </ColumnText>
+          <ColumnText>
             <TableCell style={{ color: "#878787" }}>Warranty</TableCell>
             <TableCell>No Warranty</TableCell>
-          </TableRow>
-          <TableRow>
+          </ColumnText>
+          <ColumnText>
             <TableCell style={{ color: "#878787" }}>Seller</TableCell>
             <TableCell>
               <span style={{ color: "#2874f0" }}>SuperComNet</span>
               <Typography>GST invoice available</Typography>
               <Typography>View more sellers starting from ₹329</Typography>
             </TableCell>
-          </TableRow>
-          <TableRow>
+          </ColumnText>
+          <ColumnText>
             <TableCell colSpan={2}>
               <img src={adURL} style={{ width: 390 }} alt="img" />
             </TableCell>
-          </TableRow>
-          <TableRow>
+          </ColumnText>
+          <ColumnText>
             <TableCell style={{ color: "#878787" }}>Description</TableCell>
             <TableCell>{product.description}</TableCell>
-          </TableRow>
+          </ColumnText>
         </TableBody>
       </Table>
     </>

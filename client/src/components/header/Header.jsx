@@ -1,8 +1,16 @@
 import React from "react";
-import { AppBar, Box, Toolbar, Typography, styled } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Toolbar,
+  Typography,
+  styled,
+} from "@mui/material";
 import Search from "./Search";
 import CustomButton from "./CustomButton";
 import { Link } from "react-router-dom";
+import { Menu } from "@mui/icons-material";
 
 const StyledHeader = styled(AppBar)({
   background: "#2874f0",
@@ -27,9 +35,19 @@ const PlusImage = styled("img")({
   marginLeft: "2px",
 });
 
-const CustomButtonStyle = styled(Box)({
+const CustomButtonStyle = styled(Box)(({ theme }) => ({
   marginLeft: "35px",
-});
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
+
+const MenuButton = styled(IconButton)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.down("sm")]: {
+    display: "block",
+  },
+}));
 
 const Header = () => {
   const logoURL =
@@ -40,6 +58,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: "55px" }}>
+        <MenuButton color="inherit">
+          <Menu />
+        </MenuButton>
         <Component to="/">
           <img src={logoURL} alt="logo" style={{ width: "75px" }} />
           <Box style={{ display: "flex" }}>
