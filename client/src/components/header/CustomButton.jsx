@@ -5,15 +5,18 @@ import LoginDialog from "../login/LoginDialog";
 import { DataContext } from "../../context/DataProvider";
 import Profile from "./Profile";
 
-const Wrapper = styled(Box)({
+const Wrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   margin: "0 3% 0 auto",
-  "& > div,& > p,& > button": {
+  "& > *": {
     marginRight: "40px",
     fontSize: "16px",
     alignItems: "center",
   },
-});
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
 const Loginbutton = styled(Button)({
   color: "#2874f0",

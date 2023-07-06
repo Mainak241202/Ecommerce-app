@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -6,6 +6,9 @@ import {
   Toolbar,
   Typography,
   styled,
+  Drawer,
+  List,
+  ListItem,
 } from "@mui/material";
 import Search from "./Search";
 import CustomButton from "./CustomButton";
@@ -55,12 +58,35 @@ const Header = () => {
   const subURL =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
 
+  const [open, setopen] = useState(false);
+
+  const list = () => (
+    <Box style={{ width: 200 }} onClick={handleClose}>
+      <List>
+        <ListItem>
+          <CustomButton />
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  const handleOpen = () => {
+    setopen(true);
+  };
+
+  const handleClose = () => {
+    setopen(false);
+  };
+
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: "55px" }}>
-        <MenuButton color="inherit">
+        <MenuButton color="inherit" onClick={handleOpen}>
           <Menu />
         </MenuButton>
+        <Drawer open={open} onClose={handleClose}>
+          {list()}
+        </Drawer>
         <Component to="/">
           <img src={logoURL} alt="logo" style={{ width: "75px" }} />
           <Box style={{ display: "flex" }}>
