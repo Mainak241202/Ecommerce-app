@@ -13,7 +13,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
     fontSize: "16px",
     alignItems: "center",
   },
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     display: "block",
   },
 }));
