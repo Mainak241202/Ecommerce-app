@@ -61,7 +61,7 @@ const Header = () => {
   const [open, setopen] = useState(false);
 
   const list = () => (
-    <Box style={{ width: 200 }} onClick={handleClose}>
+    <Box style={{ width: 180 }} onClick={handleClose}>
       <List>
         <ListItem>
           <CustomButton />

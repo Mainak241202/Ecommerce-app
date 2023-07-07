@@ -9,13 +9,17 @@ const Wrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   margin: "0 3% 0 auto",
   "& > *": {
-    marginRight: "40px",
-    fontSize: "16px",
+    marginRight: 40,
+    fontSize: 16,
     alignItems: "center",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "block",
   },
+}));
+
+const Container = styled(Box)(({ theme }) => ({
+  display: "flex",
 }));
 
 const Loginbutton = styled(Button)({
@@ -51,10 +55,11 @@ const CustomButton = () => {
         Become a Seller
       </Typography>
       <Typography style={{ marginTop: 3 }}>More</Typography>
-      <Box style={{ display: "flex" }}>
+      <Container>
         <ShoppingCart />
         <Typography>Cart</Typography>
-      </Box>
+      </Container>
+
       <LoginDialog open={open} setopen={setopen} />
     </Wrapper>
   );
