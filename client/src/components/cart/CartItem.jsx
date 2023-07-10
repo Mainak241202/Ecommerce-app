@@ -1,13 +1,18 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 import React from "react";
+import { addEllipsis } from "../../utils/common-utils";
+import GroupedButton from "./GroupedButton";
 
 const Component = styled(Box)({
   borderTop: "1px solid #f0f0f0",
   display: "flex",
+  background: "#fff",
 });
 
 const LeftComponent = styled(Box)({
   margin: "20px",
+  display: "flex",
+  flexDirection: "column",
 });
 
 const SmallText = styled(Typography)({
@@ -30,10 +35,11 @@ const CartItem = ({ item }) => {
   return (
     <Component>
       <LeftComponent>
-        <img src={item.url} alt="prod" />
+        <img style={{ height: 110, width: 110 }} src={item.url} alt="prod" />
+        <GroupedButton />
       </LeftComponent>
-      <Box>
-        <Typography>{item.title.longTitle}</Typography>
+      <Box style={{ margin: 20 }}>
+        <Typography>{addEllipsis(item.title.longTitle)}</Typography>
         <SmallText>
           Seller:RetailNet
           <span>
