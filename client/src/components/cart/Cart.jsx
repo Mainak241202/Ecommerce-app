@@ -48,8 +48,8 @@ const Cart = () => {
               <StyledButton>Remove Order</StyledButton>
             </ButtonWrapper>
           </Grid>
-          <Grid item lg={9} md={9} sm={12} xs={12}>
-            <TotalView />
+          <Grid item lg={3} md={3} sm={12} xs={12}>
+            <TotalView cartItems={cartItems} />
           </Grid>
         </Container>
       ) : (
