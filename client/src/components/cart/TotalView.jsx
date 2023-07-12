@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Typography, styled } from "@mui/material";
 
 const Header = styled(Box)({
@@ -11,33 +11,70 @@ const Heading = styled(Typography)({
   color: "#878787",
 });
 
+const Container = styled(Box)({
+  padding: "20px 24px",
+  background: "#fff",
+  "&>p": {
+    marginBottom: "20px",
+    fontSize: "14px",
+  },
+  "& > h6": {
+    marginBottom: "20px",
+  },
+});
 
+const Price = styled(Typography)({
+  float: "right",
+});
+
+const Discount = styled(Typography)({
+  fontWeight: 500,
+  color: "green",
+});
 
 const TotalView = ({ cartItems }) => {
+  const [price, setprice] = useState(0);
+  const [discount, setdiscount] = useState(0);
+
+  useEffect(() => {
+    totalAmount();
+  }, [cartItems]);
+
+  const totalAmount = () => {
+    let price = 0,
+      discount = 0;
+    cartItems.map((item) => {
+      price += item.price.mrp;
+      discount += item.price.mrp - item.price.cost;
+    });
+    setprice(price);
+    setdiscount(discount);
+  };
+
   return (
     <Box>
       <Header>
         <Heading>PRICE DETAILS</Heading>
       </Header>
-      <Box>
+      <Container>
         <Typography>
           Price ({cartItems?.length} item)
-          <Box component="span">₹100</Box>
+          <Price component="span">₹{price}</Price>
         </Typography>
         <Typography>
           Discount
-          <Box component="span">-₹100</Box>
+          <Price component="span">-₹{discount}</Price>
         </Typography>
         <Typography>
           Delivery Charges
-          <Box component="span">₹40</Box>
+          <Price component="span">₹40</Price>
         </Typography>
-        <Typography>
+        <Typography variant="h6">
           Total Amount
-          <Box>₹400</Box>
+          <Price>₹{price - discount + 40}</Price>
         </Typography>
-        <Typography>You will save ₹30 on this order</Typography>
-      </Box>
+        <Discount>You will save ₹{discount - 40} on this order</Discount>
+      </Container>
     </Box>
   );
 };
