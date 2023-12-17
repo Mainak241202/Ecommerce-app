@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actionTypes from "../constants/cartConstants";
 
-const URL = "https://ecommerce-app-liart-zeta.vercel.app";
+const URL = "http://localhost:8000";
 
 export const addtoCart = (id, quantity) => async (dispatch) => {
   try {

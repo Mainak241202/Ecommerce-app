@@ -10,13 +10,7 @@ const app = express();
 
 dotenv.config();
 
-app.use(cors(
-  {
-    origin: ["https://ecommerce-app-frontend-dun.vercel.app"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }
-));
+app.use(cors());
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", Router);
@@ -27,10 +21,6 @@ const USERNAME = process.env.DB_USERNAME;
 const PASSWORD = process.env.DB_PASSWORD;
 
 Connection(USERNAME, PASSWORD);
-
-app.get('/', (req, res) => {
-  res.json("Hello");
-})
 
 app.listen(PORT, () =>
   console.log(`Server is running successfully on PORT ${PORT}`)
